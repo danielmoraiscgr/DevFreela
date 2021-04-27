@@ -1,7 +1,7 @@
 ﻿using System;
 namespace DevFreela.Application.InputModels
 {
-    public class NewUserInputModel
+    public class CreateUserInputModel
     {
         public string FullName { get; set; }
 

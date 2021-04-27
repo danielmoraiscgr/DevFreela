@@ -1,7 +1,9 @@
 using DevFreela.API.Models;
+using DevFreela.Application.Commands.CreateProject;
 using DevFreela.Application.Services.Implementations;
 using DevFreela.Application.Services.Interfaces;
 using DevFreela.Infrastructure.Persistence;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -25,18 +27,24 @@ namespace DevFreela.API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.Configure<OpeningTimeOption>(Configuration.GetSection("OpeningTime"));
+            //services.Configure<OpeningTimeOption>(Configuration.GetSection("OpeningTime"));
 
+            var connectionsString = Configuration.GetConnectionString("DevFreelaCs");
             services.AddDbContext<DevFreelaDbContext>(
-                options => options.UseSqlServer(Configuration.GetConnectionString("DevFreelaCs")));
+                options => options.UseSqlServer(connectionsString));
 
-            services.AddSingleton<DevFreelaDbContext>();
+            //services.AddDbContext<DevFreelaDbContext>(options => options.UseInMemoryDataBase("DevfreelaCs"));
+
 
             services.AddScoped<IProjectService, ProjectService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ISkillService, SkillService>();
 
-            services.AddScoped<ExampleClass>(e => new ExampleClass { Name = "Initial Stage" });
+            //services.AddScoped<ExampleClass>(e => new ExampleClass { Name = "Initial Stage" });
 
             services.AddControllers();
+
+            services.AddMediatR(typeof(CreateProjectCommand));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DevFreela.API", Version = "v1" });
@@ -52,7 +60,7 @@ namespace DevFreela.API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DevFreela.API v1"));
             }
-
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();
