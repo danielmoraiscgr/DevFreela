@@ -1,5 +1,8 @@
 using DevFreela.API.Models;
+using DevFreela.Application.Commands.CreateComment;
 using DevFreela.Application.Commands.CreateProject;
+using DevFreela.Application.Commands.DeleteProject;
+using DevFreela.Application.Commands.UpdateProject;
 using DevFreela.Application.Services.Implementations;
 using DevFreela.Application.Services.Interfaces;
 using DevFreela.Infrastructure.Persistence;
@@ -36,15 +39,12 @@ namespace DevFreela.API
             //services.AddDbContext<DevFreelaDbContext>(options => options.UseInMemoryDataBase("DevfreelaCs"));
 
 
-            services.AddScoped<IProjectService, ProjectService>();
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<ISkillService, SkillService>();
-
-            //services.AddScoped<ExampleClass>(e => new ExampleClass { Name = "Initial Stage" });
-
+           
             services.AddControllers();
 
-            services.AddMediatR(typeof(CreateProjectCommand));
+            services.AddMediatR(typeof(CreateProjectCommand));            
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DevFreela.API", Version = "v1" });

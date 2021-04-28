@@ -14,6 +14,15 @@
     <Folder Include="Queries\" />
     <Folder Include="Commands\CreateProject\" />
     <Folder Include="Queries\GetAllSkills\" />
+    <Folder Include="Commands\CreateComment\" />
+    <Folder Include="Commands\DeleteProject\" />
+    <Folder Include="Commands\UpdateProject\" />
+    <Folder Include="Queries\GetUser\" />
+    <Folder Include="Queries\GetAllProjects\" />
+    <Folder Include="Queries\GetProjectById\" />
+    <Folder Include="Commands\CreateUser\" />
+    <Folder Include="Commands\StartProject\" />
+    <Folder Include="Commands\FinishProject\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DevFreela.Core\DevFreela.Core.csproj" />
