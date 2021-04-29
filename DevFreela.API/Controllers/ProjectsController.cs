@@ -30,7 +30,6 @@ namespace DevFreela.API.Controllers
              _mediator = mediator; 
         }
 
-
         [HttpGet]
         public async Task<IActionResult> Get(string query)  
         {
