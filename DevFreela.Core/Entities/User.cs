@@ -11,6 +11,8 @@ namespace DevFreela.Core.Entities
 
         public string Password { get; private set; }
 
+        public string Role { get; private set; }
+
         public DateTime BirthDate { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
@@ -26,11 +28,12 @@ namespace DevFreela.Core.Entities
         public List<ProjectComment> Comments { get; private set; }
 
 
-        public User(string fullName, string email, string password, DateTime birthDate)
+        public User(string fullName, string email, string password, string role, DateTime birthDate)
         {
             FullName = fullName;
             Email = email;
-            Password = password; 
+            Password = password;
+            Role = role;
             BirthDate = birthDate;
             CreatedAt = DateTime.Now;
             Active = true;
