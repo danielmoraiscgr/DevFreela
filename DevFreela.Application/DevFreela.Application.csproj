@@ -21,6 +21,7 @@
     <Folder Include="Commands\StartProject\" />
     <Folder Include="Commands\FinishProject\" />
     <Folder Include="Validators\" />
+    <Folder Include="Commands\LoginUser\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DevFreela.Core\DevFreela.Core.csproj" />

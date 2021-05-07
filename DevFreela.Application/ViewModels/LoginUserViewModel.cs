@@ -1,17 +1,16 @@
 ﻿using System;
-namespace DevFreela.Application.InputModels
+namespace DevFreela.Application.ViewModels
 {
     public class LoginUserViewModel
     {
-        public LoginUserViewModel(string fullName, string email)
+        public LoginUserViewModel(string email, string token)
         {
-            FullName = fullName;
             Email = email;
+            Token = token;
         }
 
-        public string FullName { get; set; }
+        public string Email { get; private set; }
 
-        public string Email { get; set; }
-
+        public string  Token { get; private set; }
     }
 }
